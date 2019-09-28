@@ -28,6 +28,7 @@ const Smurfs = ({ fetchSmurfs, ...props }) => {
 
   const submitNewSmurf = event => {
     event.preventDefault();
+    console.log("form submitted");
     let newObj = {
       name: newSmurfName,
       age: newSmurfAge,
@@ -36,7 +37,7 @@ const Smurfs = ({ fetchSmurfs, ...props }) => {
     };
     axios
       .post("http://localhost:3333/smurfs", newObj)
-      .then(fetchSmurfs())
+      //   .then(fetchSmurfs())
       .catch(err => {
         console.log(err);
       });
@@ -67,7 +68,7 @@ const Smurfs = ({ fetchSmurfs, ...props }) => {
           onChange={heightChangeHandler}
         />
 
-        <button hidden />
+        <button>Add Smurf</button>
       </form>
       <div>
         {props.smurfs.map(smurf => (

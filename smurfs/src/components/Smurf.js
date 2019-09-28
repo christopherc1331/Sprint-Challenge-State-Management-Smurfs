@@ -5,6 +5,8 @@ const Smurf = props => {
   return (
     <div>
       <h1>{props.smurf.name}</h1>
+      <em>{props.smurf.age}</em>
+      <p>{props.smurf.height}</p>
     </div>
   );
 };

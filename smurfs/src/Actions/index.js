@@ -12,11 +12,9 @@ export const fetchSmurfs = dispatch => {
     axios
       .get("http://localhost:3333/smurfs")
       .then(res => {
-        console.log(res.data);
-        res.data.forEach(smurf => {
-          console.log("smurf in forEach", smurf);
-          dispatch({ type: FETCH_SMURFS_SUCCESS, payload: smurf });
-        });
+        console.log("GET data from API", res.data);
+
+        dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
       })
 
       .catch(err => {
@@ -24,3 +22,23 @@ export const fetchSmurfs = dispatch => {
       });
   };
 };
+
+// export const addSmurf = dispatch => {
+//   return function(dispatch) {
+//     dispatch({ type: ADD_SMURF });
+
+//     axios
+//       .get("http://localhost:3333/post", )
+//       .then(res => {
+//         console.log(res.data);
+//         res.data.forEach(smurf => {
+//           console.log("smurf in forEach", smurf);
+//           dispatch({ type: FETCH_SMURFS_SUCCESS, payload: smurf });
+//         });
+//       })
+
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   };
+// };

@@ -25,14 +25,14 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        smurfs: [
-          {
-            name: action.payload.name,
-            age: action.payload.age,
-            height: action.payload.height,
-            id: action.payload.id
-          }
-        ]
+        smurfs: action.payload.map(smurf => {
+          return {
+            name: smurf.name,
+            age: smurf.age,
+            height: smurf.height,
+            id: smurf.id
+          };
+        })
       };
 
     default:
