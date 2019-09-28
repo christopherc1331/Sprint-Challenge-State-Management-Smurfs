@@ -37,7 +37,7 @@ const Smurfs = ({ fetchSmurfs, ...props }) => {
     };
     axios
       .post("http://localhost:3333/smurfs", newObj)
-      //   .then(fetchSmurfs())
+      .then(fetchSmurfs())
       .catch(err => {
         console.log(err);
       });
