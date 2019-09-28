@@ -3,12 +3,14 @@ import { fetchSmurfs } from "../Actions";
 import { connect } from "react-redux";
 import axios from "axios";
 
+import Smurf from "./Smurf.js";
+
 const Smurfs = ({ fetchSmurfs, ...props }) => {
   useEffect(() => {
     fetchSmurfs();
   }, [fetchSmurfs]);
 
-  console.log(props);
+  console.log("props from Smurfs.js", props);
 
   const [newSmurfName, setNewSmurfName] = useState("");
   const [newSmurfAge, setNewSmurfAge] = useState("");
@@ -41,7 +43,7 @@ const Smurfs = ({ fetchSmurfs, ...props }) => {
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={submitNewSmurf}>
         <input
           type="text"
@@ -67,23 +69,26 @@ const Smurfs = ({ fetchSmurfs, ...props }) => {
 
         <button hidden />
       </form>
-    </>
+      <div>
+        {props.smurfs.map(smurf => (
+          <Smurf key={smurf.id} smurf={smurf} />
+        ))}
+      </div>
+    </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
     isLoading: state.isLoading,
-    smurfs: [
-      state.smurfs.map(smurf => {
-        return {
-          name: smurf.name,
-          age: smurf.age,
-          height: smurf.height,
-          id: smurf.id
-        };
-      })
-    ]
+    smurfs: state.smurfs.map(smurf => {
+      return {
+        name: smurf.name,
+        age: smurf.age,
+        height: smurf.height,
+        id: smurf.id
+      };
+    })
   };
 };
 
