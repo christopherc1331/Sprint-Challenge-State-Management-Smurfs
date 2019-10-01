@@ -1,5 +1,10 @@
 1. What problem does the context API help solve?
+Context API tries to reduce the amount of repetitive prop drilling that you have to do with regular state management
 1. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+actions are the functions that dispatch action objects, reducers take in an action type & payload and update the app store, and the store is one single place for all of your state to live that checks all the reducers when state changes occurs to see what needs to be updated based on the action that's taking place
 1. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+application state refers to state which isn't visually displayed for users but rather acts as a key which grants access to other state transitions/visual components which weren't previously available to the user.  component state is specific to the component and doesn't need to be accessed by other parts of your app
 1. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+Redux thunk allows you to add a function to your action creator function instead of just a dispatch.  It can delay when your dispatch is executed, or only execute when certain conditions are met
 1. What is your favorite state management system you've learned and this sprint? Please explain why!
+my favorite system was definitely ContextAPI.  It was very straightforward and didn't abstract as much as Redux does, even though I love how organized everything is in Redux.  If I was working on a very large application with a whole team, then i would probably prefer to do it with Redux for this reason.
